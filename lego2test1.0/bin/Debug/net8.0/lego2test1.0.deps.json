@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "lego2test1.0/1.0.0": {
+        "runtime": {
+          "lego2test1.0.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "lego2test1.0/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
