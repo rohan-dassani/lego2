@@ -17,30 +17,12 @@ class Program
         Console.WriteLine("Initializing Result Logger...");
         ResultLogger.LogResult("starting", 0,"0", "0",0, 0, 0, "0", "0");
 
-        // Phase 1: File Volume and Event Duration Tests
+        // Test params
         Console.WriteLine("Starting Phase 1: File Volume and Event Duration Tests...");
-        // await RunTest("Test1", fileCount: 10, duration: TimeSpan.FromMinutes(1), fileSizeInKB: 5);
-        // phase-1
-        // await RunTest("Test1", fileCount: 1000, duration: TimeSpan.FromMinutes(2), fileSizeInKB: 5);
-        // await RunTest("Test2", fileCount: 5000, duration: TimeSpan.FromMinutes(5), fileSizeInKB: 10);
-        // await RunTest("Test3", fileCount: 5000, duration: TimeSpan.FromMinutes(10), fileSizeInKB: 25);
-        // await RunTest("Test4", fileCount: 10000, duration: TimeSpan.FromMinutes(15), fileSizeInKB: 50);
+        await RunTest("Test1", fileCount: 50000, duration: TimeSpan.FromMinutes(1), fileSizeInKB: 10, 4096*16, 8);
 
-        // // phase-2
-        // // 1min
-        // await RunTest("Test1", fileCount: 2500, duration: TimeSpan.FromMinutes(1), fileSizeInKB: 25 , 4096);
-        // // await PromptUserToContinue();
-        // await RunTest("Test2", fileCount: 2500, duration: TimeSpan.FromMinutes(1), fileSizeInKB: 25 , 8192);
-        // await RunTest("Test3", fileCount: 2500, duration: TimeSpan.FromMinutes(1), fileSizeInKB: 25 , 8192*2);
-        // 
-        // //2min
-        // await RunTest("Test1", fileCount: 2500, duration: TimeSpan.FromMinutes(2), fileSizeInKB: 25 , 4096);
-        // await RunTest("Test2", fileCount: 2500, duration: TimeSpan.FromMinutes(2), fileSizeInKB: 25 , 8192);
-        // await RunTest("Test3", fileCount: 2500, duration: TimeSpan.FromMinutes(2), fileSizeInKB: 25 , 8192*2);
-
-        // phase3
         //thread counts for file creation
-        await RunTest("Test1-phase3", fileCount: 1000, duration: TimeSpan.FromMinutes(1), fileSizeInKB: 25 , 8192, 2);
+        // await RunTest("Test1-phase3", fileCount: 1000, duration: TimeSpan.FromMinutes(1), fileSizeInKB: 25 , 8192, 2);
         // await RunTest("Test2-phase3", fileCount: 2500, duration: TimeSpan.FromMinutes(1), fileSizeInKB: 25 , 8192, 2);
         // await RunTest("Test3-phase3", fileCount: 2500, duration: TimeSpan.FromMinutes(1), fileSizeInKB: 25 , 8192, 4);
         // await RunTest("Test4-phase3", fileCount: 2500, duration: TimeSpan.FromMinutes(1), fileSizeInKB: 25 , 8192, 8);
@@ -57,6 +39,7 @@ class Program
         // int threadCount = Environment.ProcessorCount;
         int threadCount = threadcount;
         Console.WriteLine($"Using {threadCount} threads for file generation...");
+        Console.WriteLine($"buffersize: {buffersize}");
 
         // Prepare directories
         if (Directory.Exists(sourceDirectory))
@@ -68,10 +51,15 @@ class Program
         {
             Directory.Delete(targetDirectory, true); // true for recursive deletion
         }
-        await Task.Delay(100000);
+        await Task.Delay(5000);
 
         Directory.CreateDirectory(sourceDirectory);
         Directory.CreateDirectory(targetDirectory);
+
+        // ////////////////////////////// toremove
+        // FileGenerator generator = new FileGenerator(sourceDirectory);
+        // await generator.GenerateFiles(fileCount, duration, threadCount , fileSizeInKB);
+        // ////////////////////////////// toremove
 
         // Start the watcher
         Watcher watcher = new Watcher(sourceDirectory, targetDirectory, buffersize);
@@ -87,7 +75,7 @@ class Program
 
         // Allow watcher to process all files
         Console.WriteLine($"Waiting for FileWatcher to process events for {testCase}...");
-        await Task.Delay(100000); // Wait for some buffer time if needed
+        await Task.Delay(5000); // Wait for some buffer time if needed
 
         // End watcher and log results
         Console.WriteLine($"Logging results for {testCase}...");

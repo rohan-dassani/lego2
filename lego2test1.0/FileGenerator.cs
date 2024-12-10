@@ -26,13 +26,22 @@ public class FileGenerator
 
             try
             {
+                // small file name
                 string filePath = Path.Combine(directoryPath, $"testfile_{i}.txt");
-                // string filePath = Path.Combine(directoryPath, $"testfileeeeeeeeeeeeeeeeeeee_{i}.txt");
+                // large file name
+                // string filePath = Path.Combine(directoryPath, $"testfileeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeefedaereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee_{i}.txt");
+
+                //simulate update
+                // string filePath = Path.Combine(directoryPath, $"testfile_0.txt");
 
                 // Try-catch block for file writing
                 try
                 {
+                    //for create
                     await File.WriteAllTextAsync(filePath, content); // Write fixed-size content
+
+                    //for update
+                    // await File.WriteAllTextAsync(filePath, DateTime.Now.ToString()); // Write current timestamp as string
                     Console.WriteLine($"Generated file: {filePath}");
                 }
                 catch (IOException ex)
@@ -45,7 +54,7 @@ public class FileGenerator
                 }
 
                 // Add delay after each file generation
-                await Task.Delay(delayBetweenFiles); // Control creation rate
+                // await Task.Delay(delayBetweenFiles); // Control creation rate
             }
             finally
             {

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("lego2test1.0")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e28cc484baf06feeebcbc1ce672e37b8fa65e5b7")]
 [assembly: System.Reflection.AssemblyProductAttribute("lego2test1.0")]
 [assembly: System.Reflection.AssemblyTitleAttribute("lego2test1.0")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

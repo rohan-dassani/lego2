@@ -12,3 +12,4 @@ C:\Users\rohandassani\AzureMigrateRepos\lego2\lego2test1.0\obj\Debug\net8.0\refi
 C:\Users\rohandassani\AzureMigrateRepos\lego2\lego2test1.0\obj\Debug\net8.0\lego2test1.0.pdb
 C:\Users\rohandassani\AzureMigrateRepos\lego2\lego2test1.0\obj\Debug\net8.0\lego2test1.0.genruntimeconfig.cache
 C:\Users\rohandassani\AzureMigrateRepos\lego2\lego2test1.0\obj\Debug\net8.0\ref\lego2test1.0.dll
+C:\Users\rohandassani\AzureMigrateRepos\lego2\lego2test1.0\obj\Debug\net8.0\lego2test1.0.sourcelink.json
